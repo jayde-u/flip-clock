@@ -1,5 +1,5 @@
 const ampm = document.getElementById("ampm");
-const hour = document.getElementById("hour");
+const hour = document.getElementById("hour-text");
 const minute = document.getElementById("minute");
 const second = document.getElementById("second");
 
@@ -16,6 +16,7 @@ const updateClock = () => {
         ampmString = 'PM';
         hourString = currentHour % 12;
         if (hourString == 0) hourString = 12;
+        hourString = hourString.toString().padStart(2, '0');
     }
     
     ampm.textContent = ampmString;

@@ -3,18 +3,27 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Filp Clock</title>
-<link rel="stylesheet" type="text/css" href="./style.css">	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./style.css">	
+	<title>Flip Clock</title>
 </head>
 <body>
-	<div id="container">
-		<div class="block" id ="ampm">ampm</div>
-		<div class="block" id="hour">hour</div>
-		<div class="block" id="minute">minute</div>
-		<div class="block" id="second">second</div>
+	<div id="big-container">
+		<div></div>
+		<div id="small-container">
+			<div class="block" id="hour">
+				<span id="hour-text">00</span>
+				<div id="ampm">AM</div>
+			</div>
+			<div class="block" id="minute">00</div>
+			<div class="block" id="second">00</div>
+		</div>
+		<div></div>
 	</div>
 	
-	<footer>Jayde Yu</footer>
+	<footer>Flip Clock</footer>
 	<script type="text/javascript" src="./script.js"></script>
 </body>
 </html>
