@@ -17,32 +17,13 @@ html, body {
 #small-container {
     display: grid;
     grid-template-columns: 3fr 3fr 1fr;
+    align-items: end;
+    justify-items: center;
 
+    width: 100%;
     margin:10px;
     grid-gap: 10px;
-    justify-items: center;
-    align-items: end;
     font-size: 4vw;
-
-    width: 100%;
-}
-
-.block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family: "Special Gothic Expanded One", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    color:rgb(179, 179, 179);
-
-    background: linear-gradient(0.1turn, rgb(26, 26, 26), rgb(51, 51, 51));
-    border-radius: 10px;
-
-    width: 100%;
-    max-width: min(100vw, 95vh);
-    aspect-ratio: 1 / 1;
 }
 
 #ampm {
@@ -52,16 +33,86 @@ html, body {
     font-size: 0.3em;
 }
 
-#hour {
-    position: relative;
-}
-
 #hour, #minute {
     font-size: 3em;
 }
 
 #second {
     font-size: 1em;
+}
+
+.block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: min(100vw, 95vh);
+    aspect-ratio: 1 / 1;
+
+    font-family: "Special Gothic Expanded One", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color:rgb(180, 180, 180);
+}
+
+.top, .bottom {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+
+    overflow: hidden;
+}
+
+.top {
+    top: 0;
+    background: linear-gradient(to bottom, rgb(35, 35, 35), rgb(40, 40, 40));
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.7);
+}
+
+.bottom {
+    bottom: 0;
+    background: linear-gradient(to bottom,rgb(40, 40, 40), rgb(50, 50, 50));
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200%;
+}
+
+.bottom .num {
+    transform: translateY(-50%);
+}
+
+.flip.top {
+    transform-origin: center bottom;
+    animation: flip-top 0.8s both;
+    z-index: 2;
+}
+
+.flip.bottom {
+    transform-origin: center top;
+    animation: flip-bottom 0.8s both;
+    z-index: 2;
+}
+
+@keyframes flip-top {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(90deg); }
+}
+
+@keyframes flip-bottom {
+    0% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
 }
 
 footer {

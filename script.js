@@ -1,30 +1,69 @@
 const ampm = document.getElementById("ampm");
-const hour = document.getElementById("hour-text");
+const hour = document.getElementById("hour");
 const minute = document.getElementById("minute");
 const second = document.getElementById("second");
 
+let prevMin = null;
+let prevHour = null;
+
 const updateClock = () => {
     const now = new Date();
-    let ampmString = 'AM';
-    let hourString = '00';
 
-    const currentHour = now.getHours();
-    const currentMin = now.getMinutes().toString().padStart(2, '0');
-    const currentSec = now.getSeconds().toString().padStart(2, '0');
-
-    if (currentHour >= 12) {
-        ampmString = 'PM';
-        hourString = currentHour % 12;
-        if (hourString == 0) hourString = 12;
-        hourString = hourString.toString().padStart(2, '0');
-    }
+    let ampmText = (now.getHours() >= 12) ? 'PM' : 'AM';
+    ampm.textContent = ampmText;
     
-    ampm.textContent = ampmString;
-    hour.textContent = hourString;
-    minute.textContent = currentMin;
-    second.textContent = currentSec;
+    let hh = ( now.getHours() % 12) || 12;
+    hh = hh.toString().padStart(2, '0');
+
+    const mm = now.getMinutes().toString().padStart(2, '0');
+    const ss = now.getSeconds().toString().padStart(2, '0');
+    flipCard(second, ss);
+
+    if (mm !== prevMin) {
+        flipCard(minute, mm);
+        prevMin = mm;
+    }
+
+    if (hh !== prevHour) {
+        flipCard(hour, hh);
+        prevHour = hh;
+    }
 }
 
-updateClock();
 setInterval(updateClock, 1000);
-// or 60초에 한 번 업데이트? 매초 업데이트하는거보다 시간 단위가 낫나?
+
+
+const flipCard = (timeElement, time) => {
+    const nextTop = timeElement.querySelector('.next.top');
+    const nextBottom = timeElement.querySelector('.next.bottom');
+    const prevTop = timeElement.querySelector('.prev.top');
+    const prevBottom = timeElement.querySelector('.prev.bottom');
+    
+    nextTop.querySelector('.num').textContent = time;
+    prevTop.classList.add('flip');
+
+    setTimeout(() => {
+        prevTop.querySelector('.num').textContent = time;
+        nextBottom.querySelector('.num').textContent = time;
+        nextBottom.classList.add('flip');
+    }, 400);
+
+    setTimeout(() => {
+        prevBottom.querySelector('.num').textContent = time;
+        nextBottom.classList.remove('flip');
+        prevTop.classList.remove('flip');
+        swapCard(prevTop, prevBottom, nextTop, nextBottom);
+    }, 900);
+};
+
+const swapCard = (prevTop, prevBottom, nextTop, nextBottom) => {
+    prevTop.classList.remove('prev');
+    prevTop.classList.add('next');
+    prevBottom.classList.remove('prev');
+    prevBottom.classList.add('next');
+
+    nextTop.classList.remove('next');
+    nextTop.classList.add('prev');
+    nextBottom.classList.remove('next');
+    nextBottom.classList.add('prev');
+}
