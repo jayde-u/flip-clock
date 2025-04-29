@@ -8,7 +8,6 @@ let prevHour = null;
 
 const updateClock = () => {
     const now = new Date();
-    
     let hh = (now.getHours() % 12) || 12;
     hh = hh.toString().padStart(2, '0');
     const mm = now.getMinutes().toString().padStart(2, '0');
@@ -26,7 +25,7 @@ const updateClock = () => {
         changeAMPM(now.getHours());
         prevHour = hh;
     }
-}
+};
 
 setInterval(updateClock, 1000);
 
@@ -35,7 +34,7 @@ const changeAMPM = (hour) => {
         let ampmText = (hour >= 12) ? 'PM' : 'AM';
         ampm.textContent = ampmText;
     }, 400);    
-}
+};
 
 const flipCard = (timeElement, time) => {
     const nextTop = timeElement.querySelector('.next.top');
@@ -43,21 +42,25 @@ const flipCard = (timeElement, time) => {
     const prevTop = timeElement.querySelector('.prev.top');
     const prevBottom = timeElement.querySelector('.prev.bottom');
     
-    nextTop.querySelector('.num').textContent = time;
+    updateTime(nextTop, time);
     prevTop.classList.add('flip');
 
     setTimeout(() => {
-        prevTop.querySelector('.num').textContent = time;
-        nextBottom.querySelector('.num').textContent = time;
+        updateTime(prevTop, time);
+        updateTime(nextBottom, time);
         nextBottom.classList.add('flip');
     }, 400);
 
     setTimeout(() => {
-        prevBottom.querySelector('.num').textContent = time;
+        updateTime(prevBottom, time);
         nextBottom.classList.remove('flip');
         prevTop.classList.remove('flip');
         swapCard(prevTop, prevBottom, nextTop, nextBottom);
     }, 900);
+};
+
+const updateTime = (cardElement, time) => {
+    cardElement.querySelector('.num').textContent = time;
 };
 
 const swapCard = (prevTop, prevBottom, nextTop, nextBottom) => {
@@ -70,4 +73,4 @@ const swapCard = (prevTop, prevBottom, nextTop, nextBottom) => {
     nextTop.classList.add('prev');
     nextBottom.classList.remove('next');
     nextBottom.classList.add('prev');
-}
+};
