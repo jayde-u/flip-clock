@@ -30,7 +30,7 @@ html, body {
     position: absolute;
     left: 12px;
     bottom: 8px;
-    font-size: 0.3em;
+    font-size: 0.2em;
 }
 
 #hour, #minute {
