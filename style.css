@@ -44,9 +44,9 @@ html, body {
 hr {
     z-index: 4;
     width: 100%;
-    height: 1.5px;
+    height: 0.13rem;
 
-    border: 0;    
+    border: 0; 
     background-color: rgb(24, 24, 24);
     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.7);
 }
@@ -81,12 +81,14 @@ hr {
     top: 0;
     background: linear-gradient(to bottom, rgb(35, 35, 35), rgb(45, 45, 45));
     border-radius: 10px 10px 0px 0px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .bottom {
     bottom: 0;
     background: linear-gradient(to bottom, rgb(45, 45, 45), rgb(60, 60, 60));
     border-radius: 0px 0px 10px 10px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .num {
@@ -116,19 +118,17 @@ hr {
 @keyframes flip-top {
     0% { 
         transform: rotateX(0deg); 
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
     }
     100% { 
         transform: rotateX(90deg);
-        box-shadow: 0 10px 80px rgba(0, 0, 0, 0.9);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
     }
 }
 
 @keyframes flip-bottom {
-    0% { 
-        transform: rotateX(90deg); 
-        box-shadow: 0 -5px 80px rgba(0, 0, 0, 0.8);
-    }
+    0% { transform: rotateX(90deg); }
+    30% { transform: rotateX(0deg); }
+    40% { transform: rotateX(20deg); }
     100% { transform: rotateX(0deg); }
 }
 
