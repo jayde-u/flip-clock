@@ -8,15 +8,12 @@ let prevHour = null;
 
 const updateClock = () => {
     const now = new Date();
-
-    let ampmText = (now.getHours() >= 12) ? 'PM' : 'AM';
-    ampm.textContent = ampmText;
     
-    let hh = ( now.getHours() % 12) || 12;
+    let hh = (now.getHours() % 12) || 12;
     hh = hh.toString().padStart(2, '0');
-
     const mm = now.getMinutes().toString().padStart(2, '0');
     const ss = now.getSeconds().toString().padStart(2, '0');
+    
     flipCard(second, ss);
 
     if (mm !== prevMin) {
@@ -26,12 +23,19 @@ const updateClock = () => {
 
     if (hh !== prevHour) {
         flipCard(hour, hh);
+        changeAMPM(now.getHours());
         prevHour = hh;
     }
 }
 
 setInterval(updateClock, 1000);
 
+const changeAMPM = (hour) => {
+    setTimeout(() => {
+        let ampmText = (hour >= 12) ? 'PM' : 'AM';
+        ampm.textContent = ampmText;
+    }, 400);    
+}
 
 const flipCard = (timeElement, time) => {
     const nextTop = timeElement.querySelector('.next.top');
