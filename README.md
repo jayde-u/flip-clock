@@ -1,9 +1,9 @@
 # Responsible Flip Clock
 
-A responsive **analog-style flip clock** built with vanilla JavaScript, CSS Grid, and smooth CSS animations.
-This project was designed as a **UI-focused toy project** to explore layout techniques and animation timing in a fun and visual way.
+A responsive **analog-style flip clock** built with JavaScript, CSS Grid, and smooth CSS animations.
+This project was designed as a **UI-focused toy project** to explore layout techniques and animation timing in visual way.
 
-![FlipClock](https://github.com/user-attachments/assets/49704700-59a4-4eb5-97ca-02643e0dff05)
+![flip-clock-demo](https://github.com/user-attachments/assets/85436696-cd0b-478d-a815-e409f9820f7a)
 
 #### ✨ Features
 - Responsive layout using CSS Grid
