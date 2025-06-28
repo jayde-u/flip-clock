@@ -83,6 +83,7 @@ hr {
     background: linear-gradient(to bottom, rgb(35, 35, 35), rgb(45, 45, 45));
     border-radius: 10px 10px 0px 0px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    backface-visibility: hidden;
 }
 
 .bottom {
@@ -106,31 +107,31 @@ hr {
 
 .flip.top {
     transform-origin: center bottom;
-    animation: flip-top 0.8s both;
+    animation: flip-top 0.8s ease;
     z-index: 2;
 }
 
 .flip.bottom {
     transform-origin: center top;
-    animation: flip-bottom 0.8s both;
+    animation: flip-bottom 0.8s ease;
     z-index: 2;
 }
 
 @keyframes flip-top {
     0% { 
-        transform: rotateX(0deg); 
+        transform: perspective(600px) rotateX(0deg); 
     }
     100% { 
-        transform: rotateX(90deg);
+        transform: perspective(600px) rotateX(-100deg);
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
     }
 }
 
 @keyframes flip-bottom {
-    0% { transform: rotateX(90deg); }
-    30% { transform: rotateX(0deg); }
-    40% { transform: rotateX(20deg); }
-    100% { transform: rotateX(0deg); }
+    0% { transform: perspective(600px) rotateX(90deg); }
+    30% { transform: perspective(600px) rotateX(0deg); }
+    40% { transform: perspective(600px) rotateX(20deg); }
+    100% { transform: perspective(600px) rotateX(0deg); }
 }
 
 footer {
