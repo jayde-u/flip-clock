@@ -67,12 +67,13 @@ hr {
     font-style: normal;
     font-weight: 400;
     color:rgb(190, 190, 190);
+    transform-style: preserve-3d;
 }
 
 .top, .bottom {
     position: absolute;
     width: 100%;
-    aspect-ratio: 2 / 1;
+    height: 50%;
 
     overflow: hidden;
 }
